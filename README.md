@@ -68,11 +68,7 @@ oc new-project bookinfo
 2. The next step is to create a *Service Mesh Member Roll* on the same screen you created a new *Istio Service Mesh Control Plane* about - this essentially dictates which namespaces we'll apply Service Mesh control to. Just enter *bookinfo*.
 
 3. Finally I install my bookinfo microservices application - which my Service Mesh Member Roll
-is looking out to apply control to
-
-
-I'll do that by applying some yaml that installs the Bookinfo Microservices application.
-As soon as this is created, the Service Mesh Member Roll will apply Service Mesh control to it
+is looking out to apply control to. I'll do that by applying some yaml that installs the Bookinfo Microservices application. As soon as this is created, the Service Mesh Member Roll will apply Service Mesh control to it. Execute the following:
 ```
 oc project bookinfo
 oc apply -f https://raw.githubusercontent.com/istio/istio/release-1.3/samples/bookinfo/platform/kube/bookinfo.yaml
