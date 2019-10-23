@@ -1,45 +1,45 @@
 # Installation and demo of Red Hat Service Mesh on OpenShift
 
+## Introduction - OpenShift Service Mesh demo. 
+This document contains instructions to: 
+- provision OpenShift Service Mesh using Kubernetes operators
+- configure it to use the sample Bookinfo project - found on the upstream Istio project site
+- demonstrate the various capabilities of OpenSHift Service Mesh in traffic microservice management and visualisation.
+
 ## Prerequisites
-Admin access to a Red Hat Openshift cluster - or the single node version on your laptop *Code Ready Containers*
-
-## Introduction - Openshift Service Mesh demo. 
-OpenShift Service Mesh is based on the upstream Istio project, but with Openshift we add to it - particularly
-in the areas of traffic visualisation - you'll see one such component in today's demo 
-- Kiali - for service mesh topology visualisation
-
-As you can see, I'm logged into my Openshift cluster as Administrator - both on the terminal and web interfaces.
-We use K8S operators to install the service mesh. Provisioning of Operators requires Admin access
-Consumption of operators - typically by developers does not. But for speed I'll use 
-the same Admin user for both provisioning and use.
+Admin access to a Red Hat OpenShift cluster - or the single node version on your laptop *Code Ready Containers*
 
 ## Instructions
-We need to install 4 Operators - from the Openshift Operator Hub. Navigate to the OpenShift Operator Hub:
+Log into your OpenShift cluster as administrator - both on the terminal and web interfaces.
+We use Kubernetes operators to install the service mesh. Provisioning of Operators requires admin access.
+Consumption of operators - typically by developers does not. But for speed I'll use 
+the same admin user for both provisioning and use.
 
+We need to install 4 Operators - from the OpenShift Operator Hub. Navigate to the OpenShift Operator Hub:
+![](https://raw.githubusercontent.com/tnscorcoran/OpenShift-servicemesh/master/images/1-open-shift-operatorhub.png)
 
-The first 3 support the main one, the *Red Hat OpenShift Service Mesh Operator* 
+We'll install 4 operators. The first 3 support the main one, the *Red Hat OpenShift Service Mesh Operator* 
 - Elasticsearch
 - Jaeger - for distributed tracing
 - Kiali - for Service Mesh topology visualisation
 - Red Hat OpenShift Service Mesh Operator
 
+After a few minutes the operators will be installed. They'll appear as follows:
+![](https://raw.githubusercontent.com/tnscorcoran/OpenShift-servicemesh/master/images/2-installed-operators.png)
+
+Next you create a Service Mesh from the Service Mesh operator. Create a project (namespace) called *istio-system*
+to hold the Service Mesh application. With *istio-system* selected, click into the Red Hat OpenSHift Service Mesh Operator. Then create a new *Istio Service Mesh Control Plane* in my namespace *istio-system*:
+![](https://raw.githubusercontent.com/tnscorcoran/OpenShift-servicemesh/master/images/3-install-control-plane.png)
+
+
 ===
 ===
 ===
 
-<first I create the Elasticsearch operator - at cluster scope - same for the rest >
-<then I create the Jaeger Distributed Tracing operator >
-<then I create the Kiali operator >
-<Finally I create OpenShift Service Mesh Operator >
 
-<pause recording>
-After a few minutes later my operators have installed - as you can see on screen
 
-Next I'm going to create a Service Mesh from the Service Mesh operator 
-- earlier I created a project namespace <off the projects menu here - HOVER>  istio-system    
-to hold my Service Mesh application. Let's select that
 
-First I create a new Istio Service Mesh Control Plane in my namespace istio-system.
+
 There are varios tunables here on screen - regarding the various components of SM
 ... I'll stick with the defaults
 <pause recording>
@@ -371,9 +371,9 @@ Assuming you want to give the user ability to grant access to the Application to
 ![14-update-client-in-rhsso.png](https://raw.githubusercontent.com/tnscorcoran/rhsso-3scale/master/14-update-client-in-rh-sso.png)  
   
   
-5 - Setup your API Gateway on Openshift  
+5 - Setup your API Gateway on OpenShift  
 ==================================================================================================
-Login to Openshift and make the following commands
+Login to OpenShift and make the following commands
 oc login 
 	(default credentials are developer/developer)  
 Create your project, e.g. with something like these values:  
@@ -381,17 +381,17 @@ oc new-project "3scalegateway-**_3scale-oauth-realm_**" --display-name="3scalega
   
 oc secret new-basicauth apicast-configuration-url-secret --password=https:// *3scale-access-token* @ **_3scale-domain_** (remove whitespace,  replacing **_3scale-domain_** with the URL to your SaaS on On Prem 3scale API Manager)    
   
-oc new-app -f https://raw.githubusercontent.com/3scale/3scale-amp-openshift-templates/2.0.0.GA-redhat-2/apicast-gateway/apicast.yml  
+oc new-app -f https://raw.githubusercontent.com/3scale/3scale-amp-OpenShift-templates/2.0.0.GA-redhat-2/apicast-gateway/apicast.yml  
   
 Your gateway will deploy in a couple of minutes.  
 **TIP** Scale it down to 1 Pod - that way if you want to look up logs, they can only be in the remaining Pod.  
   
-Open web Console https:// *openshift-host* :8443 and open 3scalegateway-**_3scale-oauth-realm_**   (replacing **_3scale-oauth-realm_** with your realm name)  
+Open web Console https:// *OpenShift-host* :8443 and open 3scalegateway-**_3scale-oauth-realm_**   (replacing **_3scale-oauth-realm_** with your realm name)  
 Go to Applications -> Deployments -> apicast -> Environment  
 Add this ENV variable: RHSSO_ENDPOINT and set it to: http:// sso-rhsso.*rhel-box-ip*.xip.io/auth/realms/**_3scale-oauth-realm_**   (replacing **_3scale-oauth-realm_** with your realm name)  
 Save  
   
-On Openshift web Console ->  Overview -> Create Route. 
+On OpenShift web Console ->  Overview -> Create Route. 
 Name: 		apicast-rshsso-route  
 Hostname:	apicast-rshsso.*rhel-box-ip*.xip.io  
 Leave the rest of the defaults and click Create  
