@@ -12,7 +12,7 @@ You'll need Admin access to a Red Hat OpenShift cluster - or the single node ver
 ## Instructions
 Log into your OpenShift cluster as administrator - both on the terminal and web interfaces.
 We use Kubernetes operators to install the service mesh. Provisioning of Operators requires admin access.
-Consumption of operators - typically by developers does not. But for speed I'll use 
+Consumption of operators - typically by developers does not. But for speed we'll use 
 the same admin user for both provisioning and use.
 
 We need to install 4 Operators - from the OpenShift Operator Hub. Navigate to the OpenShift Operator Hub:
