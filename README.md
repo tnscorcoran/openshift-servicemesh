@@ -28,37 +28,25 @@ After a few minutes the operators will be installed. They'll appear as follows:
 ![](https://raw.githubusercontent.com/tnscorcoran/OpenShift-servicemesh/master/images/2-installed-operators.png)
 
 Next you create a Service Mesh from the Service Mesh operator. Create a project (namespace) called *istio-system*
-to hold the Service Mesh application. With *istio-system* selected, click into the Red Hat OpenSHift Service Mesh Operator. Then create a new *Istio Service Mesh Control Plane* in my namespace *istio-system*:
+to hold the Service Mesh application. With *istio-system* selected, click into the Red Hat OpenSHift Service Mesh Operator. Then create a new *Istio Service Mesh Control Plane* in my namespace *istio-system* as shown:
 ![](https://raw.githubusercontent.com/tnscorcoran/OpenShift-servicemesh/master/images/3-install-control-plane.png)
 
+There are varios tunables here on screen - regarding the various components of Service Mesh. Stick with the defaults.
 
-===
-===
-===
-
-
-
-
-
-There are varios tunables here on screen - regarding the various components of SM
-... I'll stick with the defaults
-<pause recording>
-
-After a short time later, my application is installed - and I can verify it on screen 
-on my pods view here
-<scroll through>
-by checking the pods in my istio-system namespace - as follows:
-clear
+After a short time later, the Service Mesh application and its components are installed. You can verify it on screen 
+or in the command line as shown:
+```
 oc project istio-system
 oc get pods -w
+```
 
+As soon as all are ready and running, you can continue. 
 
-Now I'm ready to apply Service Mesh control to my microservices Application.
+Now we're ready to apply Service Mesh control to a microservices Application. We'll use the Sample BookInfo application - available from the upstream Istio website.
 
-I'm going to use the Sample BookInfo application - available from the upstream Istio website.
+Here's a diagram of the application:
+![](https://raw.githubusercontent.com/tnscorcoran/OpenShift-servicemesh/master/images/4-istio-book-info-architecture.png)
 
-here's a diagram of the application
-< show diagram of the application >
 It's a very basic application - a webpage called productpage. 
 On the left hand side of the screen will be displayed the result of the details page.
 Of most interest to us are the 3 reviews microservices.
@@ -66,36 +54,38 @@ Of most interest to us are the 3 reviews microservices.
 - when v2 of reviews is called - ratings are called and BLACK stars are shown
 - when v3 of reviews is called - ratings are called and RED stars are shown
 
-As we apply control - this visual representation makes it easy to see what's happening
+At this point, we need to do 3 things:
 
-
-3 things we need to do
-
-<start recording with architecture diagram>
-
-
-1) - the first step is to create namespace for the bookinfo application - let's call it bookinfo
-I can do this either on the GUI or the command line - let's do it on the Command line
-clear
+1. The first step is to create namespace for the bookinfo application - call it *bookinfo*. I can do this either on the GUI or the command line - let's do it on the Command line:
+```
 oc new-project bookinfo
+```
 
-< ENSURE istio-system selected on GUI >
-2) The next step is to create a 'Service Mesh Member Roll' - this essentially dictates which namespaces
-I'm going to apply SM control to - so I'll just enter bookinfo
+2. The next step is to create a 'Service Mesh Member Roll' - this essentially dictates which namespaces
+I'm going to apply Service Mesh control to - so I'll just enter bookinfo.
 
-3) Finally I install my     bookinfo    microservices application - which my Service Mesh Member Roll
+3. Finally I install my bookinfo microservices application - which my Service Mesh Member Roll
 is looking out to apply control to
 
 
-I'll do that by applying some yaml that installs the Bookinfo Microservices
-application we just saw a diagram of
-On seeing this creation - the Service Mesh Member Roll will apply Service Mesh control to it
-clear
+I'll do that by applying some yaml that installs the Bookinfo Microservices application.
+As soon as this is created, the Service Mesh Member Roll will apply Service Mesh control to it
+```
 oc project bookinfo
 oc apply -f https://raw.githubusercontent.com/istio/istio/release-1.3/samples/bookinfo/platform/kube/bookinfo.yaml
+```
+
+Wait will it completes.
+
+
+===
+===
+===
+
+
 
 <pause recording>
-# wait will it completes
+
 
 ==================================================================================================
 A couple of minutes later - our Bookinfo Microservices application is installed - with service mesh control
