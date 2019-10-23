@@ -75,35 +75,35 @@ oc project bookinfo
 oc apply -f https://raw.githubusercontent.com/istio/istio/release-1.3/samples/bookinfo/platform/kube/bookinfo.yaml
 ```
 
-Wait will it completes.
+Wait till it completes.
 
+A couple of minutes later, our Bookinfo Microservices application is installed with Service Mesh control
+as we can see:
+![](https://raw.githubusercontent.com/tnscorcoran/OpenShift-servicemesh/master/images/4-istio-book-info-pods.png)
 
-===
-===
-===
-
-
-
-<pause recording>
-
-
-==================================================================================================
-A couple of minutes later - our Bookinfo Microservices application is installed - with service mesh control
-as we can see <scroll through bookinfo pods>
-
-Next we need to setup some Service Mesh constructs - inherited from Upstream Istio - for Service Mesh control
- - first the Envoy based side car proxies and the microservices to apply them to
-clear
+Next we need to setup some Service Mesh constructs, inherited from Upstream Istio, for Service Mesh control. First the Envoy based side car proxies and the microservices to apply them to:
+```
 oc apply -n bookinfo -f https://raw.githubusercontent.com/Maistra/bookinfo/maistra-1.0/bookinfo.yaml
+```
 
- - then an Istio gateway - representing the port and protocol at the ingress point to the mesh 
- - in our case HTTP and port 80
-clear
+Next an Istio gateway - representing the port and protocol at the ingress point to the mesh(in our case HTTP and port 80):
+```
 oc apply -n bookinfo -f https://raw.githubusercontent.com/Maistra/bookinfo/maistra-1.0/bookinfo-gateway.yaml
+```
 
- - next the Istio Destination rules - that is addressible services and their versions
-clear
+Next the Istio Destination rules, that is addressible services and their versions:
+```
 oc apply -n bookinfo -f https://raw.githubusercontent.com/istio/istio/release-1.1/samples/bookinfo/networking/destination-rule-all.yaml
+```
+
+===
+===
+===
+
+
+
+
+
 
 
 
