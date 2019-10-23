@@ -52,7 +52,7 @@ Here's a diagram of the application:
 
 It's a very basic application - a webpage called productpage. 
 On the left hand side of the screen will be displayed the result of the details page.
-Of most interest to us are the 3 reviews microservices - the restuls of which will appear on the right hand side of the webpage.
+Of most interest to us are the 3 reviews microservices - the results of which will appear on the right hand side of the webpage.
 - when v1 of reviews is called - ratings is not called and NO stars are shown
 - when v2 of reviews is called - ratings are called and BLACK stars are shown
 - when v3 of reviews is called - ratings are called and RED stars are shown
