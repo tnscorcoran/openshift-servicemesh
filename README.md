@@ -65,8 +65,7 @@ At this point, we need to do 3 things:
 oc new-project bookinfo
 ```
 
-2. The next step is to create a 'Service Mesh Member Roll' - this essentially dictates which namespaces
-I'm going to apply Service Mesh control to - so I'll just enter bookinfo.
+2. The next step is to create a *Service Mesh Member Roll* on the same screen you created a new *Istio Service Mesh Control Plane* about - this essentially dictates which namespaces we'll apply Service Mesh control to. Just enter *bookinfo*.
 
 3. Finally I install my bookinfo microservices application - which my Service Mesh Member Roll
 is looking out to apply control to
