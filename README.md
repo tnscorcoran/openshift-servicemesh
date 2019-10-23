@@ -7,7 +7,7 @@ This document contains instructions to:
 - demonstrate the various capabilities of OpenShift Service Mesh in traffic microservice management and visualisation.
 
 ## Prerequisites
-Admin access to a Red Hat OpenShift cluster - or the single node version on your laptop *Code Ready Containers*
+You'll need Admin access to a Red Hat OpenShift cluster - or the single node version on your laptop *Code Ready Containers*
 
 ## Instructions
 Log into your OpenShift cluster as administrator - both on the terminal and web interfaces.
