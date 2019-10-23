@@ -15,7 +15,8 @@ the same Admin user for both provisioning and use.
 
 ## Instructions
 We need to install 4 Operators - from the Openshift Operator Hub. Navigate to the OpenShift Operator Hub:
-
+![](https://raw.githubusercontent.com/tnscorcoran/openshift-servicemesh/master/images/1-open-shift-operator-hub.png)
+ 
 
 The first 3 support the main one, the *Red Hat OpenShift Service Mesh Operator* 
 - Elasticsearch
