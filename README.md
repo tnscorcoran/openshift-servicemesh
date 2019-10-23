@@ -24,7 +24,7 @@ We'll install 4 operators. The first 3 support the main one, the *Red Hat OpenSh
 - Kiali - for Service Mesh topology visualisation
 - Red Hat OpenShift Service Mesh Operator
 
-Find each one in the Operator Hub. Click into each nd select Install. Choose Cluster scope and Automatic approval for each of the 4 operators - as shown here for Elasticsearch:
+Find each one in the Operator Hub. Click into each and select Install. Choose Cluster scope and Automatic approval for each of the 4 operators - as shown here for Elasticsearch:
 ![](https://raw.githubusercontent.com/tnscorcoran/OpenShift-servicemesh/master/images/1-operator-subscription.png)
 
 After a few minutes the operators will be installed. They'll appear as follows:
