@@ -3,8 +3,8 @@
 ## Introduction - OpenShift Service Mesh demo. 
 This document contains instructions to: 
 - provision OpenShift Service Mesh using Kubernetes operators
-- configure it to use the sample Bookinfo project - found on the upstream Istio project site
-- demonstrate the various capabilities of OpenSHift Service Mesh in traffic microservice management and visualisation.
+- configure it to use the sample Bookinfo project - found on the upstream Istio site
+- demonstrate the various capabilities of OpenShift Service Mesh in traffic microservice management and visualisation.
 
 ## Prerequisites
 Admin access to a Red Hat OpenShift cluster - or the single node version on your laptop *Code Ready Containers*
