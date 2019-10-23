@@ -7,10 +7,11 @@ This document contains instructions to:
 - demonstrate the various capabilities of OpenShift Service Mesh in traffic microservice management and visualisation.
 
 ## Prerequisites
-You'll need Admin access to a Red Hat OpenShift cluster - or the single node version on your laptop *Code Ready Containers*
+You'll need Admin access to a Red Hat OpenShift cluster - or the single node version on your laptop *Code Ready Containers*. 
+You'll also need the OpenShift Command Line (CLI) tool, *oc*.
 
 ## Instructions
-Log into your OpenShift cluster as administrator - both on the terminal and web interfaces.
+Log into your OpenShift cluster as administrator - both on the terminal using *oc* and web interfaces.
 We use Kubernetes operators to install the service mesh. Provisioning of Operators requires admin access.
 Consumption of operators - typically by developers does not. But for speed we'll use 
 the same admin user for both provisioning and use.
@@ -59,7 +60,7 @@ Of most interest to us are the 3 reviews microservices - the results of which wi
 
 At this point, we need to do 3 things:
 
-1. The first step is to create namespace for the bookinfo application - call it *bookinfo*. I can do this either on the GUI or the command line - let's do it on the Command line:
+1. The first step is to create namespace for the bookinfo application - call it *bookinfo*. I can do this either on the GUI or the command line - let's do it on the command line:
 ```
 oc new-project bookinfo
 ```
