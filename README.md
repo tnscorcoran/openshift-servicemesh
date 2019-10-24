@@ -128,7 +128,7 @@ oc apply -f https://raw.githubusercontent.com/istio/istio/master/samples/bookinf
 
 Let's hit the webpage maybe 10 times. We'll only see version 1 of Reviews, with no stars.
 
-If we switch to Kiali we'll also see only Reviews version 1.
+If we switch to Kiali we'll also only see traffic flowing to Reviews version 1.
 
 Next, let's demonstrate how Service Mesh can distinguish individual users in its routing decisions. This can be useful for Canary releases - where we only want to release a particular version to a particular group of users.
 Login as user Jason. Once logged in he will only see version 2 with black stars. All others will see version 3 - with red stars.
