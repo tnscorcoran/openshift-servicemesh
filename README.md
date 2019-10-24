@@ -131,19 +131,18 @@ Let's hit the webpage maybe 10 times. We'll only see version 1 of Reviews, with 
 If we switch to Kiali we'll also only see traffic flowing to Reviews version 1.
 
 Next, let's demonstrate how Service Mesh can distinguish individual users in its routing decisions. This can be useful for Canary releases - where we only want to release a particular version to a particular group of users.
-Login as user Jason. Once logged in he will only see version 2 with black stars. All others will see version 3 - with red stars.
 
 First let's apply that rule
 ```
 oc replace -f https://raw.githubusercontent.com/istio/istio/master/samples/bookinfo/networking/virtual-service-reviews-jason-v2-v3.yaml
 ```
-Login as with credentials jason/jason. Refresh the webpage several times. You'll only see black stars. 
-Then logout. You'll only see red stars. 
+Login as with credentials jason/jason. Refresh the webpage several times. You'll only see version 2 black stars. 
+Then logout. You'll only see version 3 red stars. 
 
 After a couple minutes if we hit Kiali - it shows only version 2 and 3 as expected.
 
 Now let's say we want to retire version 1 and we're still not sure about whether we want to 
-proceed with version 2 or 3. So we're going to send 50% to both, regeardless of who's logged in   
+proceed with version 2 or 3. So we're going to send 50% to both, regeardless of who's logged in:   
 ```
 oc replace -f https://raw.githubusercontent.com/istio/istio/master/samples/bookinfo/networking/virtual-service-reviews-v2-v3.yaml
 ```
@@ -155,9 +154,9 @@ Now let's say we're happy with version 3 and we want to roll it out to 100% of t
 oc replace -f https://raw.githubusercontent.com/istio/istio/master/samples/bookinfo/networking/virtual-service-reviews-v3.yaml
 ```
 
-A couple of minutes later, you'll see Kiali reflecting this.
+First hit the webpage repeatedly to verify. Then couple of minutes later, you'll see Kiali reflecting this.
 
-Finally let's demomstrate another feature of Service Mesh - Fault Injection. Netflix famously have a chaos monkey - that randomly just kills nodes and applications. In service mesh we can do this also - to ensure your system recovers from faults. So we'll apply a fault injection - on our details microservice to always return an error - a HTTP status of 555. Let's apply this:
+Finally let's demonstrate another feature of Service Mesh - Fault Injection. Netflix famously have a chaos monkey - that randomly just kills nodes and applications. In service mesh we can do this also - to ensure your system recovers from faults. So we'll apply a fault injection - on our details microservice to always return an error - a HTTP status of 555. Let's apply this:
 ```
 oc apply -f https://raw.githubusercontent.com/istio/istio/master/samples/bookinfo/networking/fault-injection-details-v1.yaml
 ```
@@ -168,5 +167,5 @@ Refresh webpage repeatedly. We can see details on the left is always returning a
 So this has been a demo on installing and using OpenShift Service Mesh - based on the 
 upstream Istio project.
 We've only scratched the surface on what's possible - but hopefully you get a glimpse of
-its powerful traffic control and visualisation capabilities
+its powerful traffic control and visualisation capabilities.
 
