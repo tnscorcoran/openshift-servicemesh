@@ -95,12 +95,12 @@ Next the Istio Destination rules, that is addressible services and their version
 oc apply -n bookinfo -f https://raw.githubusercontent.com/istio/istio/release-1.1/samples/bookinfo/networking/destination-rule-all.yaml
 ```
 
-Now, output the Gateway URL - which we'll append /productpage  
+Now, output the Gateway URL: 
 ```
 export GATEWAY_URL=$(oc -n istio-system get route istio-ingressgateway -o jsonpath='{.spec.host}')
 echo $GATEWAY_URL
 ```
-Append the path */productpage* to the gateway URL to view our Product Page under Service Mesh control and hit it in a browser:
+Append the path */productpage* to this gateway URL to view our Product Page under Service Mesh control. Hit it in a browser:
 ![](https://raw.githubusercontent.com/tnscorcoran/OpenShift-servicemesh/master/images/4-product-page.png)
 
 If we refresh this page several times we can see that it loops through the Review Microservice versions - showing
