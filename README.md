@@ -118,7 +118,7 @@ Once logged into Kiali:
 	- versioned app
 	- Requests %
 	- Display Traffic Animation
-    - Select every 5 seconds - last 5 minutes
+    - Select every 15 seconds - last 1 or 5 minutes
 
 Now let's start to apply traffic control. First, apply version 1 of everything. We do this with virtual services. A virtual service defines a set of traffic routing rules to apply when a host is addressed. This includes the service version ( in our case version 1 of all services )
 So let's apply this
