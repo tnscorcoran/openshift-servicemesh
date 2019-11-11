@@ -169,3 +169,5 @@ upstream Istio project.
 We've only scratched the surface on what's possible - but hopefully you get a glimpse of
 its powerful traffic control and visualisation capabilities.
 
+For a video recording of this demo - see https://youtu.be/D0qzyKc8mns
+
