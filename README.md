@@ -1,6 +1,6 @@
 # Installation and demo of Red Hat Service Mesh on OpenShift
 
-## Introduction - OpenShift Service Mesh demo. 
+## Introduction - OpenShift Service Mesh demo 
 This document contains instructions to: 
 - provision OpenShift Service Mesh using Kubernetes operators
 - configure it to use the sample Bookinfo project - found on the upstream Istio site
